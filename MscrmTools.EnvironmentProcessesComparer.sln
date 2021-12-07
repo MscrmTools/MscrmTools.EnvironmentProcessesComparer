@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MscrmTools.EnvironmentProcessesComparer", "MscrmTools.EnvironmentProcessesComparer\MscrmTools.EnvironmentProcessesComparer.csproj", "{4A13FD4B-0B1C-4D0E-B073-2372973D68CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A13FD4B-0B1C-4D0E-B073-2372973D68CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A13FD4B-0B1C-4D0E-B073-2372973D68CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A13FD4B-0B1C-4D0E-B073-2372973D68CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A13FD4B-0B1C-4D0E-B073-2372973D68CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3742E43-A02B-423E-B622-587343B796A6}
+	EndGlobalSection
+EndGlobal
