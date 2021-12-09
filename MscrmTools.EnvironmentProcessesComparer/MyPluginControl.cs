@@ -341,6 +341,9 @@ namespace MscrmTools.EnvironmentProcessesComparer
             {
                 var envName = lvProcesses.Columns[i].Text;
                 var cd = AdditionalConnectionDetails.FirstOrDefault(c => c.ConnectionName == envName) ?? ConnectionDetail;
+
+                if (!((ProcessInfo)selectedItem.Tag).Statuses.ContainsKey(cd)) continue;
+
                 var suRecord = ((ProcessInfo)selectedItem.Tag).Statuses[cd];
                 var ctrl = new ProcessStateControl(suRecord, cd, i) { Dock = DockStyle.Top, Height = 70 };
                 ctrl.OnStateChangeRequested += Ctrl_OnStateChangeRequested;

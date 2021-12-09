@@ -11,7 +11,7 @@
     <iconUrl>https://user-images.githubusercontent.com/10774317/145064695-8dcdbbc2-da0a-43dc-9cde-e634771db0c5.png</iconUrl>
     <description>This tool allows to compare state of processes across environments</description>
     <summary>This tool allows to compare state of processes across environments</summary>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Fixed issue when selecting a process that is not present in all environments</releaseNotes>
     <tags>XrmToolBox Tool Processes Workflow Comparer</tags>
     <dependencies>
       <dependency id="XrmToolBox" version="1.2016.5.27" />
