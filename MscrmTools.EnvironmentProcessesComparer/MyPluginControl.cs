@@ -6,6 +6,7 @@ using MscrmTools.EnvironmentProcessesComparer.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
@@ -118,8 +119,13 @@ namespace MscrmTools.EnvironmentProcessesComparer
 
         private void DisplayProcesses(object term = null)
         {
+            Thread.Sleep(100);
+
+            if (_processInfos == null) return;
+
             Invoke(new Action(() =>
             {
+                lvProcesses.SelectedIndexChanged -= lvProcesses_SelectedIndexChanged;
                 lvProcesses.Items.Clear();
                 lvProcesses.Items.AddRange(_processInfos.Where(p =>
                 term == null || p.Item.Text.ToLower().IndexOf(term.ToString().ToLower()) >= 0)
@@ -144,6 +150,8 @@ namespace MscrmTools.EnvironmentProcessesComparer
 
                     item.Group = lvProcesses.Groups[grp];
                 }
+
+                lvProcesses.SelectedIndexChanged += lvProcesses_SelectedIndexChanged;
             }));
         }
 
@@ -195,6 +203,8 @@ namespace MscrmTools.EnvironmentProcessesComparer
                     }
 
                     DisplayProcesses();
+
+                    tsbAddFromOtherEnvs.Enabled = true;
                 }
             });
         }
@@ -359,6 +369,43 @@ namespace MscrmTools.EnvironmentProcessesComparer
         private void tsbAddFromOtherEnvs_Click(object sender, EventArgs e)
         {
             AddAdditionalOrganization();
+        }
+
+        private void tsbExportToExcel_Click(object sender, EventArgs e)
+        {
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "CSV file (*.csv)|*.csv";
+                sfd.Title = "Select the destination file";
+                sfd.FileName = "Processes.csv";
+                if (sfd.ShowDialog(this) == DialogResult.OK)
+                {
+                    string filePath = sfd.FileName;
+
+                    using (var writer = new System.IO.StreamWriter(filePath, false, System.Text.Encoding.UTF8))
+                    {
+                        // Écrire l'en-tête
+                        var headers = lvProcesses.Columns
+                            .Cast<ColumnHeader>()
+                            .Select(col => "\"" + col.Text.Replace("\"", "\"\"") + "\"");
+                        writer.WriteLine(string.Join(",", headers));
+
+                        // Écrire les lignes
+                        foreach (ListViewItem item in lvProcesses.Items)
+                        {
+                            var values = item.SubItems
+                                .Cast<ListViewItem.ListViewSubItem>()
+                                .Select(sub => "\"" + (sub.Text == "" ? "" : sub.Text == "True" ? "Enabled" : sub.Text == "False" ? "Disabled" : sub.Text).Replace("\"", "\"\"") + "\"");
+                            writer.WriteLine(string.Join(",", values));
+                        }
+                    }
+
+                    if (DialogResult.Yes == MessageBox.Show(this, "Do you want to open generated file ? (Requires Microsoft Excel)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    {
+                        Process.Start("Excel.exe", $"\"{filePath}\"");
+                    }
+                }
+            }
         }
 
         private void tsddbLoad_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)

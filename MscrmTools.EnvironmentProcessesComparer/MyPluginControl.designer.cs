@@ -30,13 +30,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
         private void InitializeComponent()
         {
             this.tsMain = new System.Windows.Forms.ToolStrip();
-            this.tsddbLoad = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiAllProcesses = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiProcessesFromSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbAddFromOtherEnvs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tslFilter = new System.Windows.Forms.ToolStripLabel();
             this.tstbFilter = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlFilter = new System.Windows.Forms.Panel();
             this.chkShowOnlyDifference = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,6 +48,11 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chEntity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chEnvironmentState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tsddbLoad = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiAllProcesses = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProcessesFromSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbAddFromOtherEnvs = new System.Windows.Forms.ToolStripButton();
+            this.tsbExportToExcel = new System.Windows.Forms.ToolStripButton();
             this.tsMain.SuspendLayout();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -60,69 +62,42 @@ namespace MscrmTools.EnvironmentProcessesComparer
             // 
             // tsMain
             // 
+            this.tsMain.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbLoad,
             this.tsbAddFromOtherEnvs,
             this.toolStripSeparator1,
             this.tslFilter,
-            this.tstbFilter});
+            this.tstbFilter,
+            this.toolStripSeparator2,
+            this.tsbExportToExcel});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(1595, 34);
+            this.tsMain.Size = new System.Drawing.Size(1418, 39);
             this.tsMain.TabIndex = 4;
-            // 
-            // tsddbLoad
-            // 
-            this.tsddbLoad.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAllProcesses,
-            this.tsmiProcessesFromSolution});
-            this.tsddbLoad.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_16x16;
-            this.tsddbLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbLoad.Name = "tsddbLoad";
-            this.tsddbLoad.Size = new System.Drawing.Size(175, 29);
-            this.tsddbLoad.Text = "Load Processes";
-            this.tsddbLoad.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsddbLoad_DropDownItemClicked);
-            // 
-            // tsmiAllProcesses
-            // 
-            this.tsmiAllProcesses.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_16x16;
-            this.tsmiAllProcesses.Name = "tsmiAllProcesses";
-            this.tsmiAllProcesses.Size = new System.Drawing.Size(322, 34);
-            this.tsmiAllProcesses.Text = "All Processes";
-            // 
-            // tsmiProcessesFromSolution
-            // 
-            this.tsmiProcessesFromSolution.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_16x16;
-            this.tsmiProcessesFromSolution.Name = "tsmiProcessesFromSolution";
-            this.tsmiProcessesFromSolution.Size = new System.Drawing.Size(322, 34);
-            this.tsmiProcessesFromSolution.Text = "Processes from solution(s)";
-            // 
-            // tsbAddFromOtherEnvs
-            // 
-            this.tsbAddFromOtherEnvs.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_16x16;
-            this.tsbAddFromOtherEnvs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAddFromOtherEnvs.Name = "tsbAddFromOtherEnvs";
-            this.tsbAddFromOtherEnvs.Size = new System.Drawing.Size(371, 29);
-            this.tsbAddFromOtherEnvs.Text = "Add Processes from another environment";
-            this.tsbAddFromOtherEnvs.Click += new System.EventHandler(this.tsbAddFromOtherEnvs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 34);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // tslFilter
             // 
             this.tslFilter.Name = "tslFilter";
-            this.tslFilter.Size = new System.Drawing.Size(50, 29);
+            this.tslFilter.Size = new System.Drawing.Size(42, 36);
             this.tslFilter.Text = "Filter";
             // 
             // tstbFilter
             // 
             this.tstbFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tstbFilter.Name = "tstbFilter";
-            this.tstbFilter.Size = new System.Drawing.Size(300, 34);
+            this.tstbFilter.Size = new System.Drawing.Size(267, 39);
             this.tstbFilter.TextChanged += new System.EventHandler(this.filterCriteriaChanged);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // pnlFilter
             // 
@@ -135,9 +110,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.pnlFilter.Controls.Add(this.chkShowBusinessRules);
             this.pnlFilter.Controls.Add(this.label1);
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFilter.Location = new System.Drawing.Point(0, 34);
+            this.pnlFilter.Location = new System.Drawing.Point(0, 39);
+            this.pnlFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFilter.Name = "pnlFilter";
-            this.pnlFilter.Size = new System.Drawing.Size(1595, 66);
+            this.pnlFilter.Size = new System.Drawing.Size(1418, 53);
             this.pnlFilter.TabIndex = 6;
             // 
             // chkShowOnlyDifference
@@ -145,9 +121,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowOnlyDifference.AutoSize = true;
             this.chkShowOnlyDifference.Dock = System.Windows.Forms.DockStyle.Left;
             this.chkShowOnlyDifference.Enabled = false;
-            this.chkShowOnlyDifference.Location = new System.Drawing.Point(702, 0);
+            this.chkShowOnlyDifference.Location = new System.Drawing.Point(595, 0);
+            this.chkShowOnlyDifference.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowOnlyDifference.Name = "chkShowOnlyDifference";
-            this.chkShowOnlyDifference.Size = new System.Drawing.Size(302, 66);
+            this.chkShowOnlyDifference.Size = new System.Drawing.Size(249, 53);
             this.chkShowOnlyDifference.TabIndex = 12;
             this.chkShowOnlyDifference.Text = "Show only process with different state";
             this.chkShowOnlyDifference.UseVisualStyleBackColor = true;
@@ -156,9 +133,9 @@ namespace MscrmTools.EnvironmentProcessesComparer
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label2.Location = new System.Drawing.Point(688, 0);
+            this.label2.Location = new System.Drawing.Point(583, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 66);
+            this.label2.Size = new System.Drawing.Size(12, 53);
             this.label2.TabIndex = 11;
             this.label2.Text = "| ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,9 +146,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowBusinessProcessFlows.Checked = true;
             this.chkShowBusinessProcessFlows.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowBusinessProcessFlows.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowBusinessProcessFlows.Location = new System.Drawing.Point(482, 0);
+            this.chkShowBusinessProcessFlows.Location = new System.Drawing.Point(408, 0);
+            this.chkShowBusinessProcessFlows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowBusinessProcessFlows.Name = "chkShowBusinessProcessFlows";
-            this.chkShowBusinessProcessFlows.Size = new System.Drawing.Size(206, 66);
+            this.chkShowBusinessProcessFlows.Size = new System.Drawing.Size(175, 53);
             this.chkShowBusinessProcessFlows.TabIndex = 10;
             this.chkShowBusinessProcessFlows.Text = "Business Process Flows";
             this.chkShowBusinessProcessFlows.UseVisualStyleBackColor = true;
@@ -183,9 +161,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowActions.Checked = true;
             this.chkShowActions.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowActions.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowActions.Location = new System.Drawing.Point(394, 0);
+            this.chkShowActions.Location = new System.Drawing.Point(335, 0);
+            this.chkShowActions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowActions.Name = "chkShowActions";
-            this.chkShowActions.Size = new System.Drawing.Size(88, 66);
+            this.chkShowActions.Size = new System.Drawing.Size(73, 53);
             this.chkShowActions.TabIndex = 9;
             this.chkShowActions.Text = "Actions";
             this.chkShowActions.UseVisualStyleBackColor = true;
@@ -197,9 +176,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowModernFlows.Checked = true;
             this.chkShowModernFlows.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowModernFlows.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowModernFlows.Location = new System.Drawing.Point(318, 0);
+            this.chkShowModernFlows.Location = new System.Drawing.Point(271, 0);
+            this.chkShowModernFlows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowModernFlows.Name = "chkShowModernFlows";
-            this.chkShowModernFlows.Size = new System.Drawing.Size(76, 66);
+            this.chkShowModernFlows.Size = new System.Drawing.Size(64, 53);
             this.chkShowModernFlows.TabIndex = 8;
             this.chkShowModernFlows.Text = "Flows";
             this.chkShowModernFlows.UseVisualStyleBackColor = true;
@@ -211,9 +191,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowWorkflows.Checked = true;
             this.chkShowWorkflows.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowWorkflows.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowWorkflows.Location = new System.Drawing.Point(210, 0);
+            this.chkShowWorkflows.Location = new System.Drawing.Point(180, 0);
+            this.chkShowWorkflows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowWorkflows.Name = "chkShowWorkflows";
-            this.chkShowWorkflows.Size = new System.Drawing.Size(108, 66);
+            this.chkShowWorkflows.Size = new System.Drawing.Size(91, 53);
             this.chkShowWorkflows.TabIndex = 7;
             this.chkShowWorkflows.Text = "Workflows";
             this.chkShowWorkflows.UseVisualStyleBackColor = true;
@@ -225,9 +206,10 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowBusinessRules.Checked = true;
             this.chkShowBusinessRules.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowBusinessRules.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowBusinessRules.Location = new System.Drawing.Point(65, 0);
+            this.chkShowBusinessRules.Location = new System.Drawing.Point(58, 0);
+            this.chkShowBusinessRules.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkShowBusinessRules.Name = "chkShowBusinessRules";
-            this.chkShowBusinessRules.Size = new System.Drawing.Size(145, 66);
+            this.chkShowBusinessRules.Size = new System.Drawing.Size(122, 53);
             this.chkShowBusinessRules.TabIndex = 6;
             this.chkShowBusinessRules.Text = "Business Rules";
             this.chkShowBusinessRules.UseVisualStyleBackColor = true;
@@ -238,7 +220,7 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 66);
+            this.label1.Size = new System.Drawing.Size(58, 53);
             this.label1.TabIndex = 5;
             this.label1.Text = "Type : ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,14 +229,15 @@ namespace MscrmTools.EnvironmentProcessesComparer
             // 
             this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.scMain.Location = new System.Drawing.Point(0, 100);
+            this.scMain.Location = new System.Drawing.Point(0, 92);
+            this.scMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.scMain.Name = "scMain";
             // 
             // scMain.Panel1
             // 
             this.scMain.Panel1.Controls.Add(this.lvProcesses);
             this.scMain.Panel2Collapsed = true;
-            this.scMain.Size = new System.Drawing.Size(1595, 763);
+            this.scMain.Size = new System.Drawing.Size(1418, 598);
             this.scMain.SplitterDistance = 900;
             this.scMain.TabIndex = 8;
             // 
@@ -268,10 +251,11 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.lvProcesses.FullRowSelect = true;
             this.lvProcesses.HideSelection = false;
             this.lvProcesses.Location = new System.Drawing.Point(0, 0);
+            this.lvProcesses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvProcesses.MultiSelect = false;
             this.lvProcesses.Name = "lvProcesses";
             this.lvProcesses.OwnerDraw = true;
-            this.lvProcesses.Size = new System.Drawing.Size(1595, 763);
+            this.lvProcesses.Size = new System.Drawing.Size(1418, 598);
             this.lvProcesses.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvProcesses.TabIndex = 9;
             this.lvProcesses.UseCompatibleStateImageBehavior = false;
@@ -296,16 +280,61 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chEnvironmentState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chEnvironmentState.Width = 100;
             // 
+            // tsddbLoad
+            // 
+            this.tsddbLoad.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAllProcesses,
+            this.tsmiProcessesFromSolution});
+            this.tsddbLoad.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsddbLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddbLoad.Name = "tsddbLoad";
+            this.tsddbLoad.Size = new System.Drawing.Size(155, 36);
+            this.tsddbLoad.Text = "Load Processes";
+            this.tsddbLoad.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsddbLoad_DropDownItemClicked);
+            // 
+            // tsmiAllProcesses
+            // 
+            this.tsmiAllProcesses.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsmiAllProcesses.Name = "tsmiAllProcesses";
+            this.tsmiAllProcesses.Size = new System.Drawing.Size(276, 38);
+            this.tsmiAllProcesses.Text = "All Processes";
+            // 
+            // tsmiProcessesFromSolution
+            // 
+            this.tsmiProcessesFromSolution.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsmiProcessesFromSolution.Name = "tsmiProcessesFromSolution";
+            this.tsmiProcessesFromSolution.Size = new System.Drawing.Size(276, 38);
+            this.tsmiProcessesFromSolution.Text = "Processes from solution(s)";
+            // 
+            // tsbAddFromOtherEnvs
+            // 
+            this.tsbAddFromOtherEnvs.Enabled = false;
+            this.tsbAddFromOtherEnvs.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsbAddFromOtherEnvs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddFromOtherEnvs.Name = "tsbAddFromOtherEnvs";
+            this.tsbAddFromOtherEnvs.Size = new System.Drawing.Size(318, 36);
+            this.tsbAddFromOtherEnvs.Text = "Add Processes from another environment";
+            this.tsbAddFromOtherEnvs.Click += new System.EventHandler(this.tsbAddFromOtherEnvs_Click);
+            // 
+            // tsbExportToExcel
+            // 
+            this.tsbExportToExcel.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.excel1;
+            this.tsbExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExportToExcel.Name = "tsbExportToExcel";
+            this.tsbExportToExcel.Size = new System.Drawing.Size(146, 36);
+            this.tsbExportToExcel.Text = "Export To Excel";
+            this.tsbExportToExcel.Click += new System.EventHandler(this.tsbExportToExcel_Click);
+            // 
             // MyPluginControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.scMain);
             this.Controls.Add(this.pnlFilter);
             this.Controls.Add(this.tsMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MyPluginControl";
-            this.Size = new System.Drawing.Size(1595, 863);
+            this.Size = new System.Drawing.Size(1418, 690);
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
             this.pnlFilter.ResumeLayout(false);
@@ -341,5 +370,7 @@ namespace MscrmTools.EnvironmentProcessesComparer
         private System.Windows.Forms.ColumnHeader chName;
         private System.Windows.Forms.ColumnHeader chEntity;
         private System.Windows.Forms.ColumnHeader chEnvironmentState;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsbExportToExcel;
     }
 }
