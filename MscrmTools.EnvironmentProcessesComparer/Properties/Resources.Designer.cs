@@ -83,9 +83,29 @@ namespace MscrmTools.EnvironmentProcessesComparer.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ethics {
+            get {
+                object obj = ResourceManager.GetObject("ethics", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap excel1 {
             get {
                 object obj = ResourceManager.GetObject("excel1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hide32 {
+            get {
+                object obj = ResourceManager.GetObject("Hide32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -37,15 +37,20 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSolutionPickerCancel
             // 
-            this.btnSolutionPickerCancel.Location = new System.Drawing.Point(417, 7);
+            this.btnSolutionPickerCancel.Location = new System.Drawing.Point(837, 8);
+            this.btnSolutionPickerCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnSolutionPickerCancel.Name = "btnSolutionPickerCancel";
-            this.btnSolutionPickerCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnSolutionPickerCancel.Size = new System.Drawing.Size(100, 28);
             this.btnSolutionPickerCancel.TabIndex = 4;
             this.btnSolutionPickerCancel.Text = "Cancel";
             this.btnSolutionPickerCancel.UseVisualStyleBackColor = true;
@@ -54,9 +59,10 @@
             // btnSolutionPickerValidate
             // 
             this.btnSolutionPickerValidate.Enabled = false;
-            this.btnSolutionPickerValidate.Location = new System.Drawing.Point(335, 7);
+            this.btnSolutionPickerValidate.Location = new System.Drawing.Point(728, 8);
+            this.btnSolutionPickerValidate.Margin = new System.Windows.Forms.Padding(4);
             this.btnSolutionPickerValidate.Name = "btnSolutionPickerValidate";
-            this.btnSolutionPickerValidate.Size = new System.Drawing.Size(75, 23);
+            this.btnSolutionPickerValidate.Size = new System.Drawing.Size(100, 28);
             this.btnSolutionPickerValidate.TabIndex = 3;
             this.btnSolutionPickerValidate.Text = "OK";
             this.btnSolutionPickerValidate.UseVisualStyleBackColor = true;
@@ -67,10 +73,10 @@
             this.panel2.Controls.Add(this.btnSolutionPickerCancel);
             this.panel2.Controls.Add(this.btnSolutionPickerValidate);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 274);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(0, 442);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(491, 39);
+            this.panel2.Size = new System.Drawing.Size(938, 48);
             this.panel2.TabIndex = 12;
             // 
             // panel1
@@ -79,17 +85,19 @@
             this.panel1.Controls.Add(this.lblHeader);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(491, 60);
+            this.panel1.Size = new System.Drawing.Size(938, 74);
             this.panel1.TabIndex = 15;
             // 
             // lblHeader
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Segoe UI Light", 14F);
-            this.lblHeader.Location = new System.Drawing.Point(3, 6);
+            this.lblHeader.Location = new System.Drawing.Point(4, 7);
+            this.lblHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(136, 25);
+            this.lblHeader.Size = new System.Drawing.Size(171, 32);
             this.lblHeader.TabIndex = 11;
             this.lblHeader.Text = "Solutions picker";
             // 
@@ -103,9 +111,11 @@
             this.lstSolutions.Enabled = false;
             this.lstSolutions.FullRowSelect = true;
             this.lstSolutions.GridLines = true;
-            this.lstSolutions.Location = new System.Drawing.Point(0, 60);
+            this.lstSolutions.HideSelection = false;
+            this.lstSolutions.Location = new System.Drawing.Point(0, 106);
+            this.lstSolutions.Margin = new System.Windows.Forms.Padding(4);
             this.lstSolutions.Name = "lstSolutions";
-            this.lstSolutions.Size = new System.Drawing.Size(491, 214);
+            this.lstSolutions.Size = new System.Drawing.Size(938, 336);
             this.lstSolutions.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lstSolutions.TabIndex = 16;
             this.lstSolutions.UseCompatibleStateImageBehavior = false;
@@ -128,17 +138,50 @@
             this.columnHeader3.Text = "Publisher";
             this.columnHeader3.Width = 200;
             // 
+            // pnlSearch
+            // 
+            this.pnlSearch.Controls.Add(this.txtSearch);
+            this.pnlSearch.Controls.Add(this.lblSearch);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearch.Location = new System.Drawing.Point(0, 74);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlSearch.Size = new System.Drawing.Size(938, 32);
+            this.pnlSearch.TabIndex = 17;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearch.Enabled = false;
+            this.txtSearch.Location = new System.Drawing.Point(104, 4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(830, 22);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblSearch.Location = new System.Drawing.Point(4, 4);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(100, 24);
+            this.lblSearch.TabIndex = 0;
+            this.lblSearch.Text = "Search ";
+            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // SolutionPicker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(491, 313);
+            this.ClientSize = new System.Drawing.Size(938, 490);
             this.ControlBox = false;
             this.Controls.Add(this.lstSolutions);
+            this.Controls.Add(this.pnlSearch);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SolutionPicker";
@@ -149,6 +192,8 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +208,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Panel pnlSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblSearch;
     }
 }

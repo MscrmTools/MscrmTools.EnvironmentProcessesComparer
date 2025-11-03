@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.ServiceModel;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MscrmTools.EnvironmentProcessesComparer.Forms
@@ -13,6 +14,9 @@ namespace MscrmTools.EnvironmentProcessesComparer.Forms
     public partial class SolutionPicker : Form
     {
         private readonly IOrganizationService innerService;
+        private List<ListViewItem> items = new List<ListViewItem>();
+
+        private Thread searchThread;
 
         public SolutionPicker(IOrganizationService service)
         {
@@ -41,6 +45,20 @@ namespace MscrmTools.EnvironmentProcessesComparer.Forms
             {
                 MessageBox.Show(this, @"Please select a solution!", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void Display()
+        {
+            Thread.Sleep(200);
+
+            Invoke(new Action(() =>
+            {
+                var filteredItems = items.Where(i => i.Text.IndexOf(txtSearch.Text, StringComparison.InvariantCultureIgnoreCase) >= 0);
+
+                lstSolutions.Items.Clear();
+                lstSolutions.Items.AddRange(filteredItems.ToArray());
+                lstSolutions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            }));
         }
 
         private void lstSolutions_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -90,25 +108,34 @@ namespace MscrmTools.EnvironmentProcessesComparer.Forms
             worker.RunWorkerAsync();
         }
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            e.Result = RetrieveSolutions();
+            searchThread?.Abort();
+            searchThread = new Thread(new ThreadStart(Display));
+            searchThread.Start();
         }
 
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            foreach (Entity solution in ((EntityCollection)e.Result).Entities)
+            var solutions = RetrieveSolutions();
+
+            foreach (Entity solution in solutions.Entities)
             {
                 ListViewItem item = new ListViewItem(solution["friendlyname"].ToString());
                 item.SubItems.Add(solution["version"].ToString());
                 item.SubItems.Add(((EntityReference)solution["publisherid"]).Name);
                 item.Tag = solution;
 
-                lstSolutions.Items.Add(item);
+                items.Add(item);
             }
+        }
 
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Display();
             lstSolutions.Enabled = true;
             btnSolutionPickerValidate.Enabled = true;
+            txtSearch.Enabled = true;
         }
     }
 }

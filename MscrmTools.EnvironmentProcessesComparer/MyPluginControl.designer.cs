@@ -30,10 +30,18 @@ namespace MscrmTools.EnvironmentProcessesComparer
         private void InitializeComponent()
         {
             this.tsMain = new System.Windows.Forms.ToolStrip();
+            this.tsddbLoad = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiAllProcesses = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProcessesFromSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbAddFromOtherEnvs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tslFilter = new System.Windows.Forms.ToolStripLabel();
             this.tstbFilter = new System.Windows.Forms.ToolStripTextBox();
+            this.tssBulkUpdate = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbBulkUpdate = new System.Windows.Forms.ToolStripButton();
+            this.tsbHideBulkUpdateLogs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbExportToExcel = new System.Windows.Forms.ToolStripButton();
             this.pnlFilter = new System.Windows.Forms.Panel();
             this.chkShowOnlyDifference = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,20 +52,26 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chkShowBusinessRules = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.scMain = new System.Windows.Forms.SplitContainer();
+            this.scSecondary = new System.Windows.Forms.SplitContainer();
             this.lvProcesses = new System.Windows.Forms.ListView();
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chEntity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chEnvironmentState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tsddbLoad = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiAllProcesses = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiProcessesFromSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbAddFromOtherEnvs = new System.Windows.Forms.ToolStripButton();
-            this.tsbExportToExcel = new System.Windows.Forms.ToolStripButton();
+            this.gbBulkUpdateLogs = new System.Windows.Forms.GroupBox();
+            this.lvBulkUpdateLogs = new System.Windows.Forms.ListView();
+            this.chProcessName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chTargetEnv = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chMessage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tsMain.SuspendLayout();
             this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scSecondary)).BeginInit();
+            this.scSecondary.Panel1.SuspendLayout();
+            this.scSecondary.Panel2.SuspendLayout();
+            this.scSecondary.SuspendLayout();
+            this.gbBulkUpdateLogs.SuspendLayout();
             this.SuspendLayout();
             // 
             // tsMain
@@ -69,12 +83,51 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.toolStripSeparator1,
             this.tslFilter,
             this.tstbFilter,
+            this.tssBulkUpdate,
+            this.tsbBulkUpdate,
+            this.tsbHideBulkUpdateLogs,
             this.toolStripSeparator2,
             this.tsbExportToExcel});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
             this.tsMain.Size = new System.Drawing.Size(1418, 39);
             this.tsMain.TabIndex = 4;
+            // 
+            // tsddbLoad
+            // 
+            this.tsddbLoad.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAllProcesses,
+            this.tsmiProcessesFromSolution});
+            this.tsddbLoad.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsddbLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddbLoad.Name = "tsddbLoad";
+            this.tsddbLoad.Size = new System.Drawing.Size(155, 36);
+            this.tsddbLoad.Text = "Load Processes";
+            this.tsddbLoad.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsddbLoad_DropDownItemClicked);
+            // 
+            // tsmiAllProcesses
+            // 
+            this.tsmiAllProcesses.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsmiAllProcesses.Name = "tsmiAllProcesses";
+            this.tsmiAllProcesses.Size = new System.Drawing.Size(264, 26);
+            this.tsmiAllProcesses.Text = "All Processes";
+            // 
+            // tsmiProcessesFromSolution
+            // 
+            this.tsmiProcessesFromSolution.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsmiProcessesFromSolution.Name = "tsmiProcessesFromSolution";
+            this.tsmiProcessesFromSolution.Size = new System.Drawing.Size(264, 26);
+            this.tsmiProcessesFromSolution.Text = "Processes from solution(s)";
+            // 
+            // tsbAddFromOtherEnvs
+            // 
+            this.tsbAddFromOtherEnvs.Enabled = false;
+            this.tsbAddFromOtherEnvs.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
+            this.tsbAddFromOtherEnvs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddFromOtherEnvs.Name = "tsbAddFromOtherEnvs";
+            this.tsbAddFromOtherEnvs.Size = new System.Drawing.Size(318, 36);
+            this.tsbAddFromOtherEnvs.Text = "Add Processes from another environment";
+            this.tsbAddFromOtherEnvs.Click += new System.EventHandler(this.tsbAddFromOtherEnvs_Click);
             // 
             // toolStripSeparator1
             // 
@@ -94,10 +147,44 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.tstbFilter.Size = new System.Drawing.Size(267, 39);
             this.tstbFilter.TextChanged += new System.EventHandler(this.filterCriteriaChanged);
             // 
+            // tssBulkUpdate
+            // 
+            this.tssBulkUpdate.Name = "tssBulkUpdate";
+            this.tssBulkUpdate.Size = new System.Drawing.Size(6, 39);
+            // 
+            // tsbBulkUpdate
+            // 
+            this.tsbBulkUpdate.Enabled = false;
+            this.tsbBulkUpdate.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.ethics;
+            this.tsbBulkUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBulkUpdate.Name = "tsbBulkUpdate";
+            this.tsbBulkUpdate.Size = new System.Drawing.Size(166, 36);
+            this.tsbBulkUpdate.Text = "Bulk update states";
+            this.tsbBulkUpdate.Click += new System.EventHandler(this.tsbBulkUpdate_Click);
+            // 
+            // tsbHideBulkUpdateLogs
+            // 
+            this.tsbHideBulkUpdateLogs.Enabled = false;
+            this.tsbHideBulkUpdateLogs.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Hide32;
+            this.tsbHideBulkUpdateLogs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbHideBulkUpdateLogs.Name = "tsbHideBulkUpdateLogs";
+            this.tsbHideBulkUpdateLogs.Size = new System.Drawing.Size(109, 36);
+            this.tsbHideBulkUpdateLogs.Text = "Hide logs";
+            this.tsbHideBulkUpdateLogs.Click += new System.EventHandler(this.tsbHideBulkUpdateLogs_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // tsbExportToExcel
+            // 
+            this.tsbExportToExcel.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.excel1;
+            this.tsbExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExportToExcel.Name = "tsbExportToExcel";
+            this.tsbExportToExcel.Size = new System.Drawing.Size(146, 36);
+            this.tsbExportToExcel.Text = "Export To Excel";
+            this.tsbExportToExcel.Click += new System.EventHandler(this.tsbExportToExcel_Click);
             // 
             // pnlFilter
             // 
@@ -235,14 +322,34 @@ namespace MscrmTools.EnvironmentProcessesComparer
             // 
             // scMain.Panel1
             // 
-            this.scMain.Panel1.Controls.Add(this.lvProcesses);
+            this.scMain.Panel1.Controls.Add(this.scSecondary);
             this.scMain.Panel2Collapsed = true;
             this.scMain.Size = new System.Drawing.Size(1418, 598);
-            this.scMain.SplitterDistance = 900;
+            this.scMain.SplitterDistance = 896;
             this.scMain.TabIndex = 8;
+            // 
+            // scSecondary
+            // 
+            this.scSecondary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scSecondary.Location = new System.Drawing.Point(0, 0);
+            this.scSecondary.Name = "scSecondary";
+            this.scSecondary.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scSecondary.Panel1
+            // 
+            this.scSecondary.Panel1.Controls.Add(this.lvProcesses);
+            // 
+            // scSecondary.Panel2
+            // 
+            this.scSecondary.Panel2.Controls.Add(this.gbBulkUpdateLogs);
+            this.scSecondary.Panel2Collapsed = true;
+            this.scSecondary.Size = new System.Drawing.Size(1418, 598);
+            this.scSecondary.SplitterDistance = 355;
+            this.scSecondary.TabIndex = 11;
             // 
             // lvProcesses
             // 
+            this.lvProcesses.CheckBoxes = true;
             this.lvProcesses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chName,
             this.chEntity,
@@ -280,50 +387,46 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.chEnvironmentState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chEnvironmentState.Width = 100;
             // 
-            // tsddbLoad
+            // gbBulkUpdateLogs
             // 
-            this.tsddbLoad.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAllProcesses,
-            this.tsmiProcessesFromSolution});
-            this.tsddbLoad.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
-            this.tsddbLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbLoad.Name = "tsddbLoad";
-            this.tsddbLoad.Size = new System.Drawing.Size(155, 36);
-            this.tsddbLoad.Text = "Load Processes";
-            this.tsddbLoad.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsddbLoad_DropDownItemClicked);
+            this.gbBulkUpdateLogs.Controls.Add(this.lvBulkUpdateLogs);
+            this.gbBulkUpdateLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbBulkUpdateLogs.Location = new System.Drawing.Point(0, 0);
+            this.gbBulkUpdateLogs.Name = "gbBulkUpdateLogs";
+            this.gbBulkUpdateLogs.Size = new System.Drawing.Size(150, 46);
+            this.gbBulkUpdateLogs.TabIndex = 10;
+            this.gbBulkUpdateLogs.TabStop = false;
+            this.gbBulkUpdateLogs.Text = "Bulk Update Logs";
             // 
-            // tsmiAllProcesses
+            // lvBulkUpdateLogs
             // 
-            this.tsmiAllProcesses.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
-            this.tsmiAllProcesses.Name = "tsmiAllProcesses";
-            this.tsmiAllProcesses.Size = new System.Drawing.Size(276, 38);
-            this.tsmiAllProcesses.Text = "All Processes";
+            this.lvBulkUpdateLogs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chProcessName,
+            this.chTargetEnv,
+            this.chMessage});
+            this.lvBulkUpdateLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvBulkUpdateLogs.HideSelection = false;
+            this.lvBulkUpdateLogs.Location = new System.Drawing.Point(3, 18);
+            this.lvBulkUpdateLogs.Name = "lvBulkUpdateLogs";
+            this.lvBulkUpdateLogs.Size = new System.Drawing.Size(144, 25);
+            this.lvBulkUpdateLogs.TabIndex = 0;
+            this.lvBulkUpdateLogs.UseCompatibleStateImageBehavior = false;
+            this.lvBulkUpdateLogs.View = System.Windows.Forms.View.Details;
             // 
-            // tsmiProcessesFromSolution
+            // chProcessName
             // 
-            this.tsmiProcessesFromSolution.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
-            this.tsmiProcessesFromSolution.Name = "tsmiProcessesFromSolution";
-            this.tsmiProcessesFromSolution.Size = new System.Drawing.Size(276, 38);
-            this.tsmiProcessesFromSolution.Text = "Processes from solution(s)";
+            this.chProcessName.Text = "Process";
+            this.chProcessName.Width = 200;
             // 
-            // tsbAddFromOtherEnvs
+            // chTargetEnv
             // 
-            this.tsbAddFromOtherEnvs.Enabled = false;
-            this.tsbAddFromOtherEnvs.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.Dataverse_32x32;
-            this.tsbAddFromOtherEnvs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAddFromOtherEnvs.Name = "tsbAddFromOtherEnvs";
-            this.tsbAddFromOtherEnvs.Size = new System.Drawing.Size(318, 36);
-            this.tsbAddFromOtherEnvs.Text = "Add Processes from another environment";
-            this.tsbAddFromOtherEnvs.Click += new System.EventHandler(this.tsbAddFromOtherEnvs_Click);
+            this.chTargetEnv.Text = "Target Environment";
+            this.chTargetEnv.Width = 200;
             // 
-            // tsbExportToExcel
+            // chMessage
             // 
-            this.tsbExportToExcel.Image = global::MscrmTools.EnvironmentProcessesComparer.Properties.Resources.excel1;
-            this.tsbExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExportToExcel.Name = "tsbExportToExcel";
-            this.tsbExportToExcel.Size = new System.Drawing.Size(146, 36);
-            this.tsbExportToExcel.Text = "Export To Excel";
-            this.tsbExportToExcel.Click += new System.EventHandler(this.tsbExportToExcel_Click);
+            this.chMessage.Text = "Message";
+            this.chMessage.Width = 500;
             // 
             // MyPluginControl
             // 
@@ -342,6 +445,11 @@ namespace MscrmTools.EnvironmentProcessesComparer
             this.scMain.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
             this.scMain.ResumeLayout(false);
+            this.scSecondary.Panel1.ResumeLayout(false);
+            this.scSecondary.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scSecondary)).EndInit();
+            this.scSecondary.ResumeLayout(false);
+            this.gbBulkUpdateLogs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,5 +480,14 @@ namespace MscrmTools.EnvironmentProcessesComparer
         private System.Windows.Forms.ColumnHeader chEnvironmentState;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbExportToExcel;
+        private System.Windows.Forms.ToolStripSeparator tssBulkUpdate;
+        private System.Windows.Forms.ToolStripButton tsbBulkUpdate;
+        private System.Windows.Forms.SplitContainer scSecondary;
+        private System.Windows.Forms.GroupBox gbBulkUpdateLogs;
+        private System.Windows.Forms.ListView lvBulkUpdateLogs;
+        private System.Windows.Forms.ColumnHeader chProcessName;
+        private System.Windows.Forms.ColumnHeader chTargetEnv;
+        private System.Windows.Forms.ColumnHeader chMessage;
+        private System.Windows.Forms.ToolStripButton tsbHideBulkUpdateLogs;
     }
 }

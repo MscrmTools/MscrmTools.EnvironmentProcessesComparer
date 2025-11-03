@@ -54,5 +54,15 @@ namespace MscrmTools.EnvironmentProcessesComparer.AppCode
         {
             _statuses.Add(detail, pi.Record);
         }
+
+        internal void UpdateListViewItem()
+        {
+            for(int i=2; i<Item.ListView.Columns.Count;i++)
+            {
+                var cd = (ConnectionDetail)Item.ListView.Columns[i].Tag;
+
+                Item.SubItems[i].Text = Statuses[cd].GetAttributeValue<OptionSetValue>("statecode").Value == 1 ? "True" : "False";
+            }
+        }
     }
 }
